@@ -29,10 +29,18 @@
 }
 -(bool)loadData: (QuranObject*) data {
     if (data) {
-        for (int i = 0; i < data.suar_array.count; ++i) {
+        for (int i = 0; i < 10; ++i) {
             SuraObject* suraData = data.suar_array[i];
             NSString* oriStr = self.quranText.text;
             oriStr = [oriStr stringByAppendingString:suraData.sura_name];
+            oriStr = [oriStr stringByAppendingString:@"\n"];
+            
+            for (int j = 0; j < suraData.aya_array.count; ++j) {
+                AyaObject* ayaData = suraData.aya_array[j];
+                
+                oriStr = [oriStr stringByAppendingString:ayaData.aya_text];
+                oriStr = [oriStr stringByAppendingString:@"\n"];
+            }
             self.quranText.text = oriStr;
         }
     }
