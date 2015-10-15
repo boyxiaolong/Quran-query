@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "QuranViewController.h"
+#import "QuranObject.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) QuranViewController *query_vc;
+@property (strong, nonatomic) QuranObject *quranData;
 
 @end
 

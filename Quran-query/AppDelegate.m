@@ -7,16 +7,15 @@
 //
 
 #import "AppDelegate.h"
-#import "QuranObject.h"
 #import "SuraObject.h"
 #import "AyaObject.h"
 
 @interface AppDelegate ()
 
-@property (strong, nonatomic) QuranObject *quranData;
 @property (strong, nonatomic) SuraObject *tmpSura;
 @property (strong, nonatomic) AyaObject *tmpAya;
-
+@property (strong, nonatomic) NSArray *elementToParse;
+@property BOOL isNeedStore;
 @end
 
 @implementation AppDelegate
@@ -26,16 +25,17 @@
     // Override point for customization after application launch.
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.backgroundColor = [UIColor purpleColor];
+    self.window.backgroundColor = [UIColor whiteColor];
     self.query_vc = [[QuranViewController alloc] init];
     self.window.rootViewController = self.query_vc;
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"GuLan" ofType:@"xml"];
     NSFileHandle *file = [NSFileHandle fileHandleForReadingAtPath:path];
     NSData *data = [file readDataToEndOfFile];
-    NSLog(@"data len:%d", [data length]);
     
     NSXMLParser *xmlparser = [[NSXMLParser alloc] initWithData:data];
+    
+    self.isNeedStore = FALSE;
     
     [xmlparser setDelegate:self];
     BOOL res = [xmlparser parse];
@@ -44,6 +44,10 @@
     }
     else {
         NSLog(@"parse failed");
+    }
+    
+    if (!self.elementToParse){
+        self.elementToParse = [[NSArray alloc] initWithObjects:@"", nil];
     }
     [self.window makeKeyAndVisible];
     return YES;
@@ -83,16 +87,40 @@
         }
         self.tmpSura.sura_id = [[attributeDict objectForKey:@"id"] integerValue];
         self.tmpSura.sura_name = [attributeDict objectForKey:@"name"];
-        NSLog(@"sura id:%d name:%@", self.tmpSura.sura_id, self.tmpSura.sura_name);
+        //NSLog(@"sura id:%d name:%@", self.tmpSura.sura_id, self.tmpSura.sura_name);
+    }
+    else if ([elementName isEqualToString:@"qurantext"]){
+        self.isNeedStore = TRUE;
+    }
+    else if ([elementName isEqualToString:@"aya"]){
+        if (!self.tmpAya) {
+            self.tmpAya = [[AyaObject alloc] init];
+        }
+        self.tmpAya.aya_id = [[attributeDict objectForKey:@"id"] integerValue];
     }
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
-
+    if (self.isNeedStore) {
+        //NSLog(@"aya is :%d %@", self.tmpAya.aya_id,string);
+        self.isNeedStore = FALSE;
+        self.tmpAya.aya_text = string;
+    }
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
+    if ([elementName isEqualToString:@"aya"]) {
+        [self.tmpSura.aya_array addObject:self.tmpAya];
+        self.tmpAya = nil;
+    }
+    else if ([elementName isEqualToString:@"sura"]) {
+        [self.quranData.suar_array addObject:self.tmpSura];
+        self.tmpSura = nil;
+    }
 }
-
+- (void)parserDidEndDocument:(NSXMLParser *)parser
+{
+    NSLog(@"now end sura size:%d", self.quranData.suar_array.count);
+}
 
 @end

@@ -17,7 +17,7 @@
 -(id)init{
     self = [super init];
     if (self) {
-        self.view.backgroundColor = [UIColor purpleColor];
+        self.view.backgroundColor = [UIColor whiteColor];
     }
     
     return self;
