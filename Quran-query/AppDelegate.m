@@ -26,8 +26,7 @@
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
-    self.query_vc = [[QuranViewController alloc] init];
-    self.window.rootViewController = self.query_vc;
+
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"GuLan" ofType:@"xml"];
     NSFileHandle *file = [NSFileHandle fileHandleForReadingAtPath:path];
@@ -49,6 +48,11 @@
     if (!self.elementToParse){
         self.elementToParse = [[NSArray alloc] initWithObjects:@"", nil];
     }
+    
+    self.query_vc = [[QuranViewController alloc] init];
+    [self.query_vc loadData:self.quranData];
+    self.window.rootViewController = self.query_vc;
+    
     [self.window makeKeyAndVisible];
     return YES;
 }

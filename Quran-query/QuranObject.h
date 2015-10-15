@@ -10,4 +10,5 @@
 
 @interface QuranObject : NSObject
 @property NSMutableArray *suar_array;
+
 @end

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "QuranObject.h"
 
 @interface QuranViewController : UIViewController
-
+-(bool)loadData: (QuranObject*) data;
 @end
