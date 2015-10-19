@@ -103,13 +103,7 @@
         [self setValueAtIndex:-1];
         self->textField.placeholder = self->placeholder;
     }
-    /*
-    else {
-        if (![self->textField.text isEqualToString:_previousSelectedString]) {
-            [self sendActionsForControlEvents:UIControlEventValueChanged];
-        }
-    }
-    */
+
     [self sendActionsForControlEvents:UIControlEventValueChanged];
 }
 

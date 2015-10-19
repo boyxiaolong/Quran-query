@@ -86,12 +86,15 @@
     NSString* oriStr = self.quranText.text;
         
     if (self.queryStr.text.length != 0) {
-        for (SuraObject *suraData in self.quranData.suarDict) {
+        for (int i = 1; i <= self.quranData.maxSuraNum; ++i) {
+            NSString* suraKey = [NSString stringWithFormat:@"%d", i];
+            
+            SuraObject* suraData = [self.quranData.suarDict objectForKey:suraKey];
             for (int j = 1; j < suraData.ayaDict.count; ++j) {
                 NSString* ayaStr = [NSString stringWithFormat:@"%d", j];
                 AyaObject* ayaData = [suraData.ayaDict objectForKey:ayaStr];
                 if ([ayaData.aya_text containsString:self.queryStr.text]) {
-                    NSString* newStr = [NSString stringWithFormat:@"[%@:%d] %@", suraData.sura_id, ayaData.aya_id, ayaData.aya_text];
+                    NSString* newStr = [NSString stringWithFormat:@"[%@:%@] %@", suraData.sura_id, ayaData.aya_id, ayaData.aya_text];
                     oriStr = [oriStr stringByAppendingString:newStr];
                     newStr = nil;
                 }
@@ -129,7 +132,8 @@
 }
 
 -(void)ayaSelected:(id)ayaId{
-    NSString *tempAyaId = [self.suraPicker text];
+    NSString *tempAyaId = [self.ayaPicker text];
+    
     if (self.tmpSura) {
         AyaObject* ayaRes = [self.tmpSura.ayaDict objectForKey:tempAyaId];
         if (!ayaRes) {
@@ -145,6 +149,8 @@
 
 -(void)suraSelected:(id)suraId{
     NSString *tempSuraId = [self.suraPicker text];
+    NSLog(@"sura %@ select", tempSuraId);
+    
     if ([tempSuraId isEqualToString:@"全部"]) {
         NSLog(@"show all");
     }

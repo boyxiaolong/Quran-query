@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Quran-query/QuranViewController.m"
-            timestampString = "466951064.374101"
+            timestampString = "466952382.911696"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "-ayaSelected:"
             landmarkType = "5">
          </BreakpointContent>
