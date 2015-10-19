@@ -12,9 +12,8 @@
 #import "AyaObject.h"
 
 @interface QuranViewController ()
-
-@property (nonatomic, retain) IBOutlet UITextView *quranText;
-
+@property (nonatomic, retain) IBOutlet UITextField *queryStr;
+@property (nonatomic, retain) IBOutlet UIButton *queryBtn;
 @end
 
 @implementation QuranViewController
@@ -39,7 +38,6 @@
                 AyaObject* ayaData = suraData.aya_array[j];
                 
                 oriStr = [oriStr stringByAppendingString:ayaData.aya_text];
-                oriStr = [oriStr stringByAppendingString:@"\n"];
             }
             self.quranText.text = oriStr;
         }
@@ -57,9 +55,32 @@
     // Dispose of any resources that can be recreated.
 }
 
--(IBAction)loadDatas:(id)sender
+-(IBAction)queryData:(id)sender
 {
+    self.quranText.text = @"";
     
+    NSString* oriStr = self.quranText.text;
+    
+    if (self.queryStr.text.length != 0) {
+        QuranObject *data = [(AppDelegate*)[[UIApplication sharedApplication] delegate] quranData];
+        for (int i = 0; i < data.suar_array.count; ++i) {
+            SuraObject* suraData = data.suar_array[i];
+            
+            
+            for (int j = 0; j < suraData.aya_array.count; ++j) {
+                AyaObject* ayaData = suraData.aya_array[j];
+                if ([ayaData.aya_text containsString:self.queryStr.text]) {
+                    NSString* newStr = [NSString stringWithFormat:@"[%d:%d] %@", suraData.sura_id, ayaData.aya_id, ayaData.aya_text];
+                    oriStr = [oriStr stringByAppendingString:newStr];
+                    newStr = nil;
+                }
+                
+            }
+        }
+    }
+    
+    self.quranText.text = oriStr;
+    [self.view endEditing:YES];
 }
 /*
 #pragma mark - Navigation

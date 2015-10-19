@@ -11,4 +11,6 @@
 
 @interface QuranViewController : UIViewController
 -(bool)loadData: (QuranObject*) data;
+@property (nonatomic, retain) IBOutlet UITextView *quranText;
+
 @end

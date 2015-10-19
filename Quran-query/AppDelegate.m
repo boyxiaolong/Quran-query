@@ -91,7 +91,6 @@
         }
         self.tmpSura.sura_id = [[attributeDict objectForKey:@"id"] integerValue];
         self.tmpSura.sura_name = [attributeDict objectForKey:@"name"];
-        //NSLog(@"sura id:%d name:%@", self.tmpSura.sura_id, self.tmpSura.sura_name);
     }
     else if ([elementName isEqualToString:@"qurantext"]){
         self.isNeedStore = TRUE;
@@ -106,9 +105,9 @@
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
     if (self.isNeedStore) {
-        //NSLog(@"aya is :%d %@", self.tmpAya.aya_id,string);
         self.isNeedStore = FALSE;
         self.tmpAya.aya_text = string;
+        self.tmpAya.aya_text = [self.tmpAya.aya_text stringByAppendingString:@"\n"];
     }
 }
 
