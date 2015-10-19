@@ -20,6 +20,7 @@
 		9F9062521BCF78B100E640EC /* SuraObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F9062511BCF78B100E640EC /* SuraObject.m */; settings = {ASSET_TAGS = (); }; };
 		9F9062551BCF791400E640EC /* AyaObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F9062541BCF791400E640EC /* AyaObject.m */; settings = {ASSET_TAGS = (); }; };
 		9F9062581BCF880D00E640EC /* QuranObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F9062571BCF880D00E640EC /* QuranObject.m */; settings = {ASSET_TAGS = (); }; };
+		9F9062601BD4F23300E640EC /* DownPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F90625F1BD4F23300E640EC /* DownPicker.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,8 @@
 		9F9062541BCF791400E640EC /* AyaObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AyaObject.m; sourceTree = "<group>"; };
 		9F9062561BCF880D00E640EC /* QuranObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuranObject.h; sourceTree = "<group>"; };
 		9F9062571BCF880D00E640EC /* QuranObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuranObject.m; sourceTree = "<group>"; };
+		9F90625E1BD4F22300E640EC /* DownPicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownPicker.h; sourceTree = "<group>"; };
+		9F90625F1BD4F23300E640EC /* DownPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownPicker.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,7 +125,9 @@
 				9F9062501BCF78B100E640EC /* SuraObject.h */,
 				9F9062561BCF880D00E640EC /* QuranObject.h */,
 				9F9062571BCF880D00E640EC /* QuranObject.m */,
+				9F90625E1BD4F22300E640EC /* DownPicker.h */,
 				9F9062511BCF78B100E640EC /* SuraObject.m */,
+				9F90625F1BD4F23300E640EC /* DownPicker.m */,
 				9F90624B1BCF65D500E640EC /* QuranViewController.h */,
 				9F90624C1BCF65D500E640EC /* QuranViewController.m */,
 				9F90624D1BCF65D500E640EC /* QuranViewController.xib */,
@@ -299,6 +304,7 @@
 				9F9062581BCF880D00E640EC /* QuranObject.m in Sources */,
 				9F90621B1BCEAD3D00E640EC /* AppDelegate.m in Sources */,
 				9F9062521BCF78B100E640EC /* SuraObject.m in Sources */,
+				9F9062601BD4F23300E640EC /* DownPicker.m in Sources */,
 				9F9062551BCF791400E640EC /* AyaObject.m in Sources */,
 				9F90624E1BCF65D500E640EC /* QuranViewController.m in Sources */,
 				9F9062181BCEAD3D00E640EC /* main.m in Sources */,

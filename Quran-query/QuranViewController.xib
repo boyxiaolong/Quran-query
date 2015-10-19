@@ -6,9 +6,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QuranViewController">
             <connections>
+                <outlet property="ayaIdText" destination="7Gh-CS-D3e" id="7nd-OO-6dJ"/>
                 <outlet property="queryBtn" destination="D2P-P7-dpN" id="Alp-Ly-XKU"/>
                 <outlet property="queryStr" destination="p6W-50-fq0" id="C3K-RG-pwZ"/>
+                <outlet property="queryView" destination="skV-qr-JaS" id="MXY-pv-8hT"/>
                 <outlet property="quranText" destination="lv8-JM-9Jm" id="Sts-XE-yzv"/>
+                <outlet property="searchBtn" destination="UZ1-4D-5E7" id="tP9-HU-68N"/>
+                <outlet property="suarIdText" destination="jsC-HI-e6l" id="O9d-Yj-q2P"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -24,22 +28,49 @@
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="输入" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p6W-50-fq0">
-                    <rect key="frame" x="130" y="37" width="97" height="30"/>
+                <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="skV-qr-JaS">
+                    <rect key="frame" x="-7" y="189" width="249" height="234"/>
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="输入" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p6W-50-fq0">
+                            <rect key="frame" x="20" y="29" width="97" height="30"/>
+                            <animations/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D2P-P7-dpN">
+                            <rect key="frame" x="149" y="31" width="63" height="25"/>
+                            <animations/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="-1" maxY="0.0"/>
+                            <state key="normal" title="查询"/>
+                            <connections>
+                                <action selector="queryData:" destination="-1" eventType="touchDown" id="e2r-DR-IDv"/>
+                            </connections>
+                        </button>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jsC-HI-e6l">
+                            <rect key="frame" x="20" y="102" width="97" height="30"/>
+                            <animations/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Gh-CS-D3e">
+                            <rect key="frame" x="152" y="102" width="97" height="30"/>
+                            <animations/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UZ1-4D-5E7">
+                            <rect key="frame" x="185" y="171" width="36" height="30"/>
+                            <animations/>
+                            <state key="normal" title="检索"/>
+                            <connections>
+                                <action selector="searchData:" destination="-1" eventType="touchDown" id="OJp-Vc-1j7"/>
+                            </connections>
+                        </button>
+                    </subviews>
                     <animations/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D2P-P7-dpN">
-                    <rect key="frame" x="273" y="37" width="63" height="25"/>
-                    <animations/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="-1" maxY="0.0"/>
-                    <state key="normal" title="查询"/>
-                    <connections>
-                        <action selector="queryData:" destination="-1" eventType="touchDown" id="e2r-DR-IDv"/>
-                    </connections>
-                </button>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

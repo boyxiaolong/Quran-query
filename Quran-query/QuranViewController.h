@@ -10,7 +10,8 @@
 #import "QuranObject.h"
 
 @interface QuranViewController : UIViewController
--(bool)loadData: (QuranObject*) data;
+-(bool)loadData;
 @property (nonatomic, retain) IBOutlet UITextView *quranText;
+@property (strong, nonatomic) QuranObject *quranData;
 
 @end

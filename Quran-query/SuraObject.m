@@ -12,9 +12,10 @@
 -(id)init{
     self = [super init];
     if (self) {
-        self.aya_array = [[NSMutableArray alloc] init];
+        self.ayaDict = [[NSMutableDictionary alloc] init];
         self.sura_name = [[NSString alloc] init];
-        self.sura_id = 0;
+        self.sura_id = [[NSString alloc] init];
+        self.maxAyaNum = 0;
     }
     
     return self;

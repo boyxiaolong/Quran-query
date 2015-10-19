@@ -15,7 +15,8 @@
     self = [super init];
     
     if (self) {
-        self.suar_array = [[NSMutableArray alloc] init];
+        self.suarDict = [[NSMutableDictionary alloc] init];
+        self.maxSuraNum = 0;
     }
     return self;
 }

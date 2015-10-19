@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface QuranObject : NSObject
-@property NSMutableArray *suar_array;
-
+@property NSMutableDictionary *suarDict;
+@property int maxSuraNum;
 @end

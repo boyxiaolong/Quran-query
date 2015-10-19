@@ -12,7 +12,7 @@
 -(id)init {
     self = [super init];
     if (self) {
-        self.aya_id = 0;
+        self.aya_id = [NSString alloc];
         self.aya_text = [NSString alloc];
     }
     

@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface SuraObject : NSObject
-@property int sura_id;
+@property NSString* sura_id;
 @property NSString *sura_name;
-@property NSMutableArray* aya_array;
+@property NSMutableDictionary* ayaDict;
+@property int maxAyaNum;
 @end

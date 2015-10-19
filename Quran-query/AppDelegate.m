@@ -50,7 +50,11 @@
     }
     
     self.query_vc = [[QuranViewController alloc] init];
-    [self.query_vc loadData:self.quranData];
+    
+    self.query_vc.quranData = self.quranData;
+    
+    [self.query_vc loadData];
+    
     self.window.rootViewController = self.query_vc;
     
     [self.window makeKeyAndVisible];
@@ -89,8 +93,12 @@
         if (!self.tmpSura) {
             self.tmpSura = [[SuraObject alloc] init];
         }
-        self.tmpSura.sura_id = [[attributeDict objectForKey:@"id"] integerValue];
+        self.tmpSura.sura_id = [attributeDict objectForKey:@"id"];
         self.tmpSura.sura_name = [attributeDict objectForKey:@"name"];
+        int suraNum = [self.tmpSura.sura_id intValue];
+        if (self.quranData.maxSuraNum < suraNum) {
+            self.quranData.maxSuraNum = suraNum;
+        }
     }
     else if ([elementName isEqualToString:@"qurantext"]){
         self.isNeedStore = TRUE;
@@ -99,7 +107,11 @@
         if (!self.tmpAya) {
             self.tmpAya = [[AyaObject alloc] init];
         }
-        self.tmpAya.aya_id = [[attributeDict objectForKey:@"id"] integerValue];
+        self.tmpAya.aya_id = [attributeDict objectForKey:@"id"];
+        int ayaid = [self.tmpAya.aya_id intValue];
+        if (self.tmpSura.maxAyaNum < ayaid) {
+            self.tmpSura.maxAyaNum = ayaid;
+        }
     }
 }
 
@@ -113,17 +125,17 @@
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
     if ([elementName isEqualToString:@"aya"]) {
-        [self.tmpSura.aya_array addObject:self.tmpAya];
+        [self.tmpSura.ayaDict setObject:self.tmpAya forKey:self.tmpAya.aya_id];
         self.tmpAya = nil;
     }
     else if ([elementName isEqualToString:@"sura"]) {
-        [self.quranData.suar_array addObject:self.tmpSura];
+        [self.quranData.suarDict setObject:self.tmpSura forKey:self.tmpSura.sura_id];
         self.tmpSura = nil;
     }
 }
 - (void)parserDidEndDocument:(NSXMLParser *)parser
 {
-    NSLog(@"now end sura size:%d", self.quranData.suar_array.count);
+    NSLog(@"now end sura size:%d", self.quranData.suarDict.count);
 }
 
 @end

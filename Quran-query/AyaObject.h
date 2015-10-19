@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface AyaObject : NSObject
-@property int aya_id;
+@property NSString* aya_id;
 @property NSString *aya_text;
 @end
