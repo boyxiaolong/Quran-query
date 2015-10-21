@@ -23,6 +23,7 @@
 @property (nonatomic, strong) DownPicker *ayaPicker;
 @property (nonatomic, strong) NSString* resString;
 @property (nonatomic, weak) SuraObject* tmpSura;
+@property BOOL isAyaSelected;
 @property int suraidSelected;
 
 @end
@@ -127,6 +128,16 @@
         NSLog(@"load all data");
         [self loadData];
     }
+    else if (!self.isAyaSelected) {
+        self.resString = @"";
+        for (int i = 1; i <= self.tmpSura.maxAyaNum; ++i) {
+            NSString* ayastr = [NSString stringWithFormat:@"%d", i];
+            AyaObject* ayaRes = [self.tmpSura.ayaDict objectForKey:ayastr];
+            NSString* tmpRes = [NSString stringWithFormat:@"[%@:%d] %@", self.tmpSura.sura_id ,i, ayaRes.aya_text];
+            self.resString = [self.resString stringByAppendingString:tmpRes];
+        }
+        self.quranText.text = self.resString;
+    }
     else if (self.resString) {
         if (!self.quranText.text) {
             self.quranText.text = [NSString alloc];
@@ -179,6 +190,7 @@
     }
     
     NSLog(@"ayaid:%@ res:%@", tempAyaId, self.resString);
+    self.isAyaSelected = true;
 }
 
 -(void)suraSelected:(id)suraId{
@@ -209,6 +221,8 @@
     }
     self.ayaPicker = [[DownPicker alloc] initWithTextField:self.ayaIdText withData:ayaArray];
     [self.ayaPicker addTarget:self action:@selector(ayaSelected:) forControlEvents:UIControlEventValueChanged];
+    [self.ayaPicker setValueAtIndex:0];
+    self.isAyaSelected = false;
 }
 /*
 #pragma mark - Navigation
